@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "receive",
+  "type": "registry:block",
+  "title": "Receive Starter",
+  "description": "A receive application with all brand components and code",
+  "registryDependencies": [
+    "https://ui.solancn.com/r/brand-header.json",
+    "https://ui.solancn.com/r/brand-sidebar.json",
+    "https://ui.solancn.com/r/product-grid.json",
+    "https://ui.solancn.com/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/app/starters/(minimal)/v0-layout.tsx",
+      "content": "import { Geist, Geist_Mono, Montserrat } from \"next/font/google\";\nimport React, { type ReactNode } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport \"@/app/tokens.css\";\nimport \"@/app/globals.css\";\n\nconst GeistSans = Geist({\n  subsets: [\"latin\"],\n  variable: \"--font-sans\",\n});\n\nconst GeistMono = Geist_Mono({\n  subsets: [\"latin\"],\n  variable: \"--font-mono\",\n});\n\nconst MontserratSerif = Montserrat({\n  subsets: [\"latin\"],\n  variable: \"--font-serif\",\n});\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: ReactNode;\n}>) {\n  return (\n    <html\n      lang=\"en\"\n      className={cn(\n        GeistSans.variable,\n        GeistMono.variable,\n        MontserratSerif.variable,\n        \"bg-background text-foreground\",\n      )}\n    >\n      <body>\n        <main className=\"mt-16 flex w-full justify-center\">\n          <div className=\"container\">{children}</div>\n        </main>\n      </body>\n    </html>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "src/app/starters/(minimal)/receive/page.tsx",
+      "content": "\"use client\";\n\nimport { ReceiveComponent } from \"@/components/receive/receive-component\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\n\nfunction ReceiveContent() {\n  return (\n    <div className=\"flex min-h-screen flex-col bg-background text-text w-full\">\n      <main className=\"flex-1 p-2 flex flex-col w-full\">\n        <div className=\"container mx-auto py-8\">\n          <Card className=\"bg-background border border-[#9945FF]/20 max-w-md mx-auto\">\n            <CardHeader>\n              <CardTitle className=\"text-text\">Receive</CardTitle>\n            </CardHeader>\n            <CardContent>\n              <ReceiveComponent />\n            </CardContent>\n          </Card>\n        </div>\n      </main>\n    </div>\n  );\n}\n\nexport default function ReceivePage() {\n  return <ReceiveContent />;\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    }
+  ]
+}
